@@ -30,8 +30,8 @@ with Image.open(path) as gif:
     for i in range(gif.n_frames):
         gif.seek(i)
         gif.save(f"frames/{name}{i}.png")
-        with open(path, "rb") as image:
-            encoded = "data:image/pngp98kjasdnasd983/24kasdjasdbase64," + str(base64.b64encode(image.read()))[2:-1]
+        with open(f"frames/{name}{i}.png", "rb") as frame:
+            encoded = "data:image/pngp98kjasdnasd983/24kasdjasdbase64," + str(base64.b64encode(frame.read()))[2:-1]
         frames.append(
             {
                 "name": "",
@@ -65,7 +65,7 @@ with Image.open(path) as gif:
                 "active": True,
                 "selectedLayer": 0,
                 "unqid": get_unqid(),
-                "preview": "data:image/pngp98kjasdnasd983/24kasdjasdbase64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABkCAYAAAAR+rcWAAAAAXNSR0IArs4c6QAAA2lJREFUeF7tnVlywjAQBcVlkvsfh1yGlB1MhNAym/aXH4pCELvdMyPJtnxzzn05537wKuNwc39/gCiU6AAIeEJ4R+TCQAW8Qz4YqIxAGAgD++ZwGAgDYeDUnXhUYVThvsNQGAgDYeAxFr8/JzU4L98jzCL16gc+fFKPt3c0hrdry/+bd0lHLf/pC5MEWAlrALTZfrUw8AzPGtBSUD2Y1cO85pE6jWsJLgTqgay2nzUMbG4cI7zNjbQ+MveexhFBmkK0MrB7uJbgXZ9bh7WFgY+RrSsUGvX+aw2cEl5gowqi5stTw7OCKDVwCXgWECUGLgVPC5Fr4JLwNBA5Bi4NTwqRauAW8CQQqQYOPcKgdqKp7Z6dbdKIhWLgVvACC4sQKQZuFb7cMC4ZuCU8DsScgVvDo0LMGbhl7ktMyiZzYXMDjwo30+zNsyInOaUMRPh6KuYgpsgifD8BRsN4WQMtUwXXQIRvZMiSghgzEOGbBvgRxrEcCANhIHXagN4uNcEQGojwzTCNQQxzIMK3DPBNOhhIj2IHAxmwYk1jXRmVgZadVeW+Nfm6uYGbArTLgZsCfOtMq6vwThDNc+CReDYEaGvgThCrGOifO5hppllStilV+LzpRQJi9VCmjoWPW0/Fw7mVITabD1wVYhMDV86HHANVYbwiRO45EXEhSZyUnuo8cGYSod9ZuZHzImXbJAaahLF/NCkbKumbab9T2i7plQlmYRxCPN5L+plaUNL0kqq+183eza+NuYZ+1w61hvkEQj6IGgPNwziToM+PasLkgvMOdPYi1KGuUL120spO//e4B6dk3rXuYukK1Sq5kJrPQqDU71kcgFLuo+RAf2VL0QQDd4dHaU+Fx1nBUjzBMAoUznZQw5e7guUWEDnwOAZe4bw0RC48roFLQ5TAkxi4JEQpPKmBS0HUwNMYuARELTytgVNDtIBnYeALYu2xLKcfl2vrjW4ow9jiMvkmP+Kt4zf0iIUzwqA+Y4AyFuausou1s4xWhuy+HJR1uMa41DAwNLa5kR644h3nWlmsc2Au3LGCJTWxEtphDVUCpGIXwK/egm5K9fCkhHeLHMit4lO1b5kDOUZOAxEG4nkieJ7INOEaK5zIgXiaA57mMHV1RhVGFUYVRhWmjBmNx87DQEcORA5EDhwmHCVp5hceTG5JJYZbdAAAAABJRU5ErkJggg==",
+                "preview": encoded,
                 "width": w,
                 "height": h
             }
@@ -91,7 +91,7 @@ output = {
     "currentFrame": 0,
     "speed": 100,
     "name": "Untitled",
-    "preview": "data:image/pngp98kjasdnasd983/24kasdjasdbase64,iVBORw0KGgoAAAANSUhEUgAAAFAA/sfR5H8Fkddasdmnacvx/AABkCAYAAAAR+rcWAAAAAXNSR0IArs4c6QAAA2lJREFUeF7tnVlywjAQBcVlkvsfh1yGlB1MhNAym/aXH4pCELvdMyPJtnxzzn05537wKuNwc39/gCiU6AAIeEJ4R+TCQAW8Qz4YqIxAGAgD++ZwGAgDYeDUnXhUYVThvsNQGAgDYeAxFr8/JzU4L98jzCL16gc+fFKPt3c0hrdry/+bd0lHLf/pC5MEWAlrALTZfrUw8AzPGtBSUD2Y1cO85pE6jWsJLgTqgay2nzUMbG4cI7zNjbQ+MveexhFBmkK0MrB7uJbgXZ9bh7WFgY+RrSsUGvX+aw2cEl5gowqi5stTw7OCKDVwCXgWECUGLgVPC5Fr4JLwNBA5Bi4NTwqRauAW8CQQqQYOPcKgdqKp7Z6dbdKIhWLgVvACC4sQKQZuFb7cMC4ZuCU8DsScgVvDo0LMGbhl7ktMyiZzYXMDjwo30+zNsyInOaUMRPh6KuYgpsgifD8BRsN4WQMtUwXXQIRvZMiSghgzEOGbBvgRxrEcCANhIHXagN4uNcEQGojwzTCNQQxzIMK3DPBNOhhIj2IHAxmwYk1jXRmVgZadVeW+Nfm6uYGbArTLgZsCfOtMq6vwThDNc+CReDYEaGvgThCrGOifO5hppllStilV+LzpRQJi9VCmjoWPW0/Fw7mVITabD1wVYhMDV86HHANVYbwiRO45EXEhSZyUnuo8cGYSod9ZuZHzImXbJAaahLF/NCkbKumbab9T2i7plQlmYRxCPN5L+plaUNL0kqq+183eza+NuYZ+1w61hvkEQj6IGgPNwziToM+PasLkgvMOdPYi1KGuUL120spO//e4B6dk3rXuYukK1Sq5kJrPQqDU71kcgFLuo+RAf2VL0QQDd4dHaU+Fx1nBUjzBMAoUznZQw5e7guUWEDnwOAZe4bw0RC48roFLQ5TAkxi4JEQpPKmBS0HUwNMYuARELTytgVNDtIBnYeALYu2xLKcfl2vrjW4ow9jiMvkmP+Kt4zf0iIUzwqA+Y4AyFuausou1s4xWhuy+HJR1uMa41DAwNLa5kR644h3nWlmsc2Au3LGCJTWxEtphDVUCpGIXwK/egm5K9fCkhHeLHMit4lO1b5kDOUZOAxEG4nkieJ7INOEaK5zIgXiaA57mMHV1RhVGFUYVRhWmjBmNx87DQEcORA5EDhwmHCVp5hceTG5JJYZbdAAAAABJRU5ErkJggg==",
+    "preview": "",
     "previewApp": "",
     "art_edit_id": 0,
     "palette_id": False,
