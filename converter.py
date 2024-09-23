@@ -15,7 +15,7 @@ def get_unqid():
     return unqid
 
 # get parameters
-path = input("What is the file path? ")
+path = input("What is the file name? ")
 name = input("What is the name of the image? ")
 w, h = Image.open(path).size
 
